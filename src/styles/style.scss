@@ -1,0 +1,31 @@
+/* global-styles */
+@import "./mixin.scss";
+@import "./globals.scss";
+@import "./variables.scss";
+@import "./animations.scss";
+
+/* blocks */
+
+@import "../blocks/page/page.scss";
+@import "../blocks/header/header.scss";
+@import "../blocks/heading/heading.scss";
+@import "../blocks/main/main.scss";
+@import "../blocks/card-feed/card-feed.scss";
+@import "../blocks/card/card.scss";
+@import "../blocks/label/label.scss";
+@import "../blocks/button/button.scss";
+@import "../blocks/like-icon/like-icon.scss";
+@import "../blocks/footer/footer.scss"
+
+
+
+
+// Когда создаёшь новый блок:
+
+// Создал папку
+
+// Создал block-name.scss
+
+// Сразу добавил строку в style.scss
+
+// Делай это в одном действии — как ритуал.

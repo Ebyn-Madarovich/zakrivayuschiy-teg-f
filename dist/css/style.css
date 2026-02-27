@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* global-styles */
+/* В этом файле уже написаны некоторые базовые стили, которые сбрасывают 
+или преобразуют дефольное браузерное поведение.
+Здесь же лежит утилитарный класс visually-hidden на случай, 
+если нужно скрыть какой-то элемент, но оставить доступным для скринридера.
+Вы можете изменять этот файл или дополнять. Но скорее всего, вам это не потребуется. */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  color: currentColor;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --font-main: 'Inter-Variable';
+  --font-accent: 'PressStart2P';
+  --font-weight-main-bold: 715;
+  --font-weight-main-normal: 410;
+  --font-weight-accent: 400;
+  --color-main: rgba(0, 0, 0, 1);
+  --color-font: rgba(0, 0, 0, 1);
+  --color-background: rgba(255, 255, 255, 1);
+  --background-image-gradient:
+  repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+  repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
+  linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --container-width: clamp(23.438rem, 100vw, 43.75rem);
+  --container-margin: 0 auto;
+}
+
+/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+*/
+/* blocks */
+/* Здесь вы напишете основную часть стилей страницы.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+*/
+.page {
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+  font-family: var(--font-main);
+  font-variation-settings: "wght" var(--font-weight-main-normal), "wdth" 100, "opsz" 0;
+  background-image: var(--background-image-gradient);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.header {
+  inline-size: var(--container-width);
+  margin: 100px auto;
+  padding: 130px 122.5px;
+  display: grid;
+  place-items: center;
+  outline: 1px solid red;
+  background-color: var(--color-background);
+}
+
+.heading {
+  font-family: var(--font-accent);
+  font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  font-family: "PressStart2P";
+}
+.heading__accent {
+  display: block;
+  font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: "PressStart2P";
+}
+
+.test {
+  color: red;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "zakrivayuschiy-teg-f",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp",
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ebyn-Madarovich/zakrivayuschiy-teg-f.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ebyn-Madarovich/zakrivayuschiy-teg-f/issues"
+  },
+  "homepage": "https://github.com/Ebyn-Madarovich/zakrivayuschiy-teg-f#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "del": "^8.0.1",
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "prettier": "^3.8.1",
+    "sass": "^1.97.3"
+  }
+}
