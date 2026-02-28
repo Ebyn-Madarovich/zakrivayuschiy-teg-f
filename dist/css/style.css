@@ -57,20 +57,26 @@ ol {
 
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-  --font-main: 'Inter-Variable';
-  --font-accent: 'PressStart2P';
+  --font-main: 'Inter-Variable', sans-serif;
+  --font-accent: 'PressStart2P', monospace;
   --font-weight-main-bold: 715;
   --font-weight-main-normal: 410;
   --font-weight-accent: 400;
+  --title-font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  --title-font-size-accent: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  --title-card-font-size: 18px;
   --color-main: rgba(0, 0, 0, 1);
   --color-font: rgba(0, 0, 0, 1);
   --color-background: rgba(255, 255, 255, 1);
+  --color-shadow-label: rgba(255, 255, 255, 1);
   --background-image-gradient:
   repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
   repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
   linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
   --container-width: clamp(23.438rem, 100vw, 43.75rem);
   --container-margin: 0 auto;
+  --block-border: 0.156rem solid var(--color-main);
 }
 
 /* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
@@ -106,30 +112,154 @@ ol {
   background-attachment: fixed;
   background-position: center center;
 }
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 
 .header {
-  inline-size: var(--container-width);
-  margin: 100px auto;
-  padding: 130px 122.5px;
   display: grid;
   place-items: center;
-  outline: 1px solid red;
+  inline-size: var(--container-width);
+  margin: 100px auto 45px;
+  padding: var(--padding-header);
   background-color: var(--color-background);
+  border: var(--block-border);
 }
 
 .heading {
   font-family: var(--font-accent);
-  font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
-  font-family: "PressStart2P";
+  font-size: var(--title-font-size);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-accent);
 }
 .heading__accent {
   display: block;
-  font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
-  text-transform: uppercase;
-  font-weight: 400;
-  font-family: "PressStart2P";
+  font-size: var(--title-font-size-accent);
+  margin-bottom: 20px;
 }
 
-.test {
-  color: red;
+.main {
+  inline-size: var(--container-width);
+  margin: 0 auto;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  appearance: none;
+}
+.button__text {
+  font-family: var(--font-accent);
+  font-weight: var(--font-weight-accent);
+  font-size: 14px;
+  line-height: 90%;
+}
+
+.card-feed__list {
+  display: flex;
+  flex-direction: column;
+  gap: 51px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  border: var(--block-border);
+}
+.card__title {
+  font-size: var(--title-card-font-size);
+  padding: 4px 10px;
+  font-variation-settings: "wght" var(--font-weight-main-bold), "wdth" 100, "opsz" 0;
+}
+.card__media {
+  block-size: clamp(23.1875rem, -0.5385rem + 101.2308vw, 43.75rem);
+  inline-size: clamp(23.1875rem, -0.25rem + 100vw, 43.5rem);
+  background-color: rgb(197, 197, 197);
+  position: relative;
+}
+.card__label-wrapper {
+  position: absolute;
+  inset-block-start: 26px;
+  inset-inline-end: 24px;
+}
+.card__image {
+  margin: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
+}
+.card__description {
+  line-height: 21px;
+  font-size: 18px;
+}
+.card__my-story {
+  line-height: 21px;
+  font-size: 18px;
+}
+.card__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 0 25px 25px 0;
+}
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+  padding: 1px 0 0 4px;
+}
+.card__like-button {
+  padding: 11px 35px;
+  border: var(--block-border);
+  block-size: 38px;
+  inline-size: 129px;
+}
+
+.label {
+  color: var(--color-main);
+  text-transform: uppercase;
+  mix-blend-mode: hard-light;
+  font-family: var(--font-accent);
+  font-weight: var(--font-weight-accent);
+  font-size: 14px;
+  mix-blend-mode: hard-light;
+  opacity: 50%;
+  text-shadow: 1px 0 var(--color-shadow-label), -1px 0 var(--color-shadow-label), 0 1px var(--color-shadow-label), 0 -1px var(--color-shadow-label);
+}
+
+@supports (text-stroke: 1px var(--color-shadow-label)) or (-webkit-text-stroke: 1px var(--color-shadow-label)) {
+  .label {
+    -webkit-text-stroke: 0.75px var(--color-shadow-label);
+    text-stroke: 0.75px var(--color-shadow-label);
+    text-shadow: none;
+  }
+}
+.footer {
+  display: grid;
+  place-items: center;
+}
+.footer__button {
+  border: var(--block-border);
+  display: flex;
+  gap: 8px;
+  padding: 17px 18px;
+  background-color: var(--color-background);
+  block-size: 55px;
+  max-inline-size: 335px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+.footer__icon {
+  block-size: 21px;
+  inline-size: 21px;
 }

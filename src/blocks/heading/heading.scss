@@ -1,16 +1,16 @@
 .heading {
     
     font-family: var(--font-accent);
-    font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
-    font-family: 'PressStart2P';
+    font-size: var(--title-font-size);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-accent);
 
     &__accent {
         display: block;
-        font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
-       text-transform: uppercase; 
-       font-weight: 400;
-       font-family: 'PressStart2P';
+        font-size: var(--title-font-size-accent);
+        margin-bottom: 20px;
     }
 
-
+    
 }

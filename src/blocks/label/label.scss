@@ -1,0 +1,27 @@
+.label {
+    color: var(--color-main);
+    text-transform: uppercase;
+    mix-blend-mode: hard-light;
+    font-family: var(--font-accent);
+    font-weight: var(--font-weight-accent);
+    font-size: 14px;
+    mix-blend-mode: hard-light;
+    opacity: 50%;
+
+    text-shadow: 
+    1px 0 var(--color-shadow-label),
+    -1px 0 var(--color-shadow-label),
+    0 1px var(--color-shadow-label),
+    0 -1px var(--color-shadow-label);
+
+}
+
+@supports(
+    (text-stroke: 1px var(--color-shadow-label)) or (-webkit-text-stroke: 1px var(--color-shadow-label))
+    ) {
+  .label {
+    -webkit-text-stroke: 0.75px var(--color-shadow-label);
+    text-stroke: 0.75px var(--color-shadow-label);
+    text-shadow: none;
+  }
+} 

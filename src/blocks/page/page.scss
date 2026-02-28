@@ -19,4 +19,11 @@
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
+  
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
 }

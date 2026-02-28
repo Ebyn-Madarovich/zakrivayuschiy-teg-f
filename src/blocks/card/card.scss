@@ -1,0 +1,73 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+    border: var(--block-border);
+
+    &__title {
+        font-size: var(--title-card-font-size);
+        padding: 4px 10px;
+        font-variation-settings:
+            'wght' var(--font-weight-main-bold),
+            'wdth' 100,
+            'opsz' 0;
+    }
+
+    &__media {
+        block-size: clamp(23.1875rem, -0.5385rem + 101.2308vw, 43.75rem);
+        inline-size: clamp(23.1875rem, -0.25rem + 100vw, 43.5rem);
+        background-color: rgb(197, 197, 197);
+        position: relative;
+    }
+
+    &__label-wrapper {
+        position: absolute;
+        inset-block-start: 26px;
+        inset-inline-end: 24px;
+    }
+
+    &__image {
+        margin: 0;
+        block-size: 100%;
+        inline-size: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 25px;
+    }
+
+    &__description {
+        line-height: 21px;
+        font-size: 18px;
+    }
+
+    &__my-story {
+        line-height: 21px;
+        font-size: 18px;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        padding: 0 25px 25px 0;
+    }
+
+    &__icon-button {
+        background-color: transparent;
+        border: none;
+        padding: 1px 0 0 4px;
+    }
+
+    &__like-button {
+        padding: 11px 35px;
+        border: var(--block-border);
+        block-size: 38px;
+        inline-size: 129px;
+    }
+}

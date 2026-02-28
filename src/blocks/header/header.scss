@@ -1,12 +1,8 @@
 .header {
+    @include grid-center-center;
     inline-size: var(--container-width);
-    margin: 100px auto;
-    padding: 130px 122.5px;
-    display: grid;
-    place-items: center;
-
-    outline: 1px solid red;
+    margin: 100px auto 45px;
+    padding: var(--padding-header);
     background-color: var(--color-background);
-
-    
+    border: var(--block-border);
 }

@@ -1,4 +1,6 @@
 // gulpfile.js (CommonJS)
+// Node 24 + gulp 5: текстовые (html/scss/js) через gulp-stream,
+// бинарные ассеты (fonts/images) — нативно через fs.cpSync (байт-в-байт)
 
 const { src, dest, series, parallel, watch } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
@@ -6,7 +8,6 @@ const browserSync = require("browser-sync").create();
 
 const fs = require("fs");
 const path = require("path");
-const crypto = require("crypto");
 
 /* ---------- Paths ---------- */
 const paths = {
@@ -14,27 +15,29 @@ const paths = {
   styles: { entry: "src/styles/style.scss", watch: "src/**/*.scss", dest: "dist/css/" },
   scripts: { src: "src/scripts/**/*.js", watch: "src/scripts/**/*.js", dest: "dist/js/" },
 
-  // assets без fonts, fonts копируем отдельно через fs.cpSync
-  assets: { src: ["src/assets/**/*", "!src/assets/fonts/**"], watch: "src/assets/**/*", dest: "dist/assets/" },
+  // ассеты кроме fonts/images
+  assets: {
+    src: ["src/assets/**/*", "!src/assets/fonts/**", "!src/assets/images/**"],
+    watch: "src/assets/**/*",
+    dest: "dist/assets/",
+  },
+
+  // бинарные ассеты
   fonts: { watch: "src/assets/fonts/**/*", srcDir: "src/assets/fonts", destDir: "dist/assets/fonts" },
+  images: { watch: "src/assets/images/**/*", srcDir: "src/assets/images", destDir: "dist/assets/images" },
 };
 
 /* ---------- Helpers ---------- */
 async function clean() {
-  // del@8 is ESM-only
-  const { deleteAsync } = await import("del");
+  const { deleteAsync } = await import("del"); // del@8 is ESM-only
   return deleteAsync(["dist"]);
 }
 
-function sha256(filePath) {
-  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
-}
-
-function fontsCopy() {
-  const from = path.resolve(paths.fonts.srcDir);
-  const to = path.resolve(paths.fonts.destDir);
+function dirCopy(fromDir, toDir) {
+  const from = path.resolve(fromDir);
+  const to = path.resolve(toDir);
   fs.mkdirSync(to, { recursive: true });
-  fs.cpSync(from, to, { recursive: true, force: true });
+  fs.cpSync(from, to, { recursive: true, force: true }); // байт-в-байт
 }
 
 function reload(done) {
@@ -47,6 +50,7 @@ function htmlBuild() {
   return src(paths.html.src).pipe(dest(paths.html.dest));
 }
 
+// В build — пусть падает с ошибкой (так и должно быть)
 function stylesBuild() {
   return src(paths.styles.entry)
     .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
@@ -62,22 +66,12 @@ function assetsBuild() {
 }
 
 function fontsBuild(done) {
-  fontsCopy();
+  dirCopy(paths.fonts.srcDir, paths.fonts.destDir);
   done();
 }
 
-function verifyFonts(done) {
-  const pairs = [
-    ["src/assets/fonts/Inter-Variable.woff2", "dist/assets/fonts/Inter-Variable.woff2"],
-    ["src/assets/fonts/PressStart2P-Regular.woff", "dist/assets/fonts/PressStart2P-Regular.woff"],
-  ];
-
-  for (const [a, b] of pairs) {
-    const ha = sha256(a);
-    const hb = sha256(b);
-    if (ha !== hb) return done(new Error(`Font mismatch: ${b}\n  src : ${ha}\n  dist: ${hb}`));
-  }
-  console.log("✅ Fonts verified: dist === src");
+function imagesBuild(done) {
+  dirCopy(paths.images.srcDir, paths.images.destDir);
   done();
 }
 
@@ -87,11 +81,17 @@ function htmlDev(done) {
   reload(done);
 }
 
+// В dev — НЕ роняем watch при ошибке sass
 function stylesDev() {
   return src(paths.styles.entry)
-    .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
+    .pipe(
+      sass({ outputStyle: "expanded" }).on("error", function (err) {
+        console.error(err.messageFormatted || err.message || err);
+        this.emit("end"); // <— ключ: не убиваем gulp/watch
+      })
+    )
     .pipe(dest(paths.styles.dest))
-    .pipe(browserSync.stream()); // CSS можно стримить без full reload
+    .pipe(browserSync.stream());
 }
 
 function scriptsDev(done) {
@@ -105,7 +105,12 @@ function assetsDev(done) {
 }
 
 function fontsDev(done) {
-  fontsCopy();
+  dirCopy(paths.fonts.srcDir, paths.fonts.destDir);
+  reload(done);
+}
+
+function imagesDev(done) {
+  dirCopy(paths.images.srcDir, paths.images.destDir);
   reload(done);
 }
 
@@ -114,18 +119,28 @@ function serve() {
     server: { baseDir: "dist" },
     notify: false,
     open: true,
-    // browser: "chrome", // оставь если нужно именно Chrome
+    // browser: "chrome",
   });
 
   watch(paths.html.watch, htmlDev);
   watch(paths.styles.watch, stylesDev);
   watch(paths.scripts.watch, scriptsDev);
+
+  // небинарные ассеты
   watch(paths.assets.watch, assetsDev);
+
+  // бинарные ассеты
   watch(paths.fonts.watch, fontsDev);
+  watch(paths.images.watch, imagesDev);
 }
 
 /* ---------- Exports ---------- */
-const build = series(clean, parallel(htmlBuild, stylesBuild, scriptsBuild, assetsBuild), fontsBuild, verifyFonts);
+const build = series(
+  clean,
+  parallel(htmlBuild, stylesBuild, scriptsBuild, assetsBuild),
+  parallel(fontsBuild, imagesBuild)
+);
+
 const dev = series(build, serve);
 
 exports.clean = clean;
