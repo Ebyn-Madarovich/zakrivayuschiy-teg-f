@@ -14,8 +14,9 @@
     }
 
     &__media {
-        block-size: clamp(23.1875rem, -0.5385rem + 101.2308vw, 43.75rem);
-        inline-size: clamp(23.1875rem, -0.25rem + 100vw, 43.5rem);
+        block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
+        // min-width: 0;      /* ключевое: разрешаем ужиматься */
+        max-width: 100%;   /* запрещаем быть шире card */
         background-color: rgb(197, 197, 197);
         position: relative;
     }
@@ -65,7 +66,7 @@
     }
 
     &__like-button {
-        padding: 11px 35px;
+        @include grid-center-center;
         border: var(--block-border);
         block-size: 38px;
         inline-size: 129px;

@@ -1,17 +1,17 @@
 .modal-window {
-    max-inline-size: clamp(21.3125rem, 20.4471rem + 3.6923vw, 22.0625rem); //clamp
+    max-inline-size: 353px;
     max-block-size: 191px;
     display: flex;
     flex-direction: column;
     gap: 29px;
     padding: 28px 30px 27px 26px;
-    overflow: auto;
     position: fixed;
     inset: 0;
     transition: opacity 0.3s ease-in-out;
     font-family: var(--font-accent);
     font-size: 14px;
     font-weight: 400;
+    box-sizing: border-box;
 
     &:not([open]) {
         pointer-events: none;
@@ -21,6 +21,13 @@
     &__body {
         display: flex;
         gap: 20px;
+        align-items: center;
+    }
+
+    &__icon {
+        width: 39px;
+        height: 39px;
+        flex-shrink: 0;
     }
 
     &__title {
@@ -34,6 +41,7 @@
         block-size: 38px;
         text-transform: uppercase;
         line-height: 90%;
+        cursor: pointer;
 
     }
 
@@ -41,4 +49,23 @@
         background-color: rgb(0 0 0 / 0.75);
         // backdrop-filter: blur(7px);
 } 
+}
+
+@media (width <= 375px) {
+    .modal-window {
+    max-inline-size: 341px;
+    max-block-size: 191px;
+    gap: 29px;
+    padding: 28px 20px 27px 36px;
+
+    &__body {
+        gap: 22px;
+    }
+
+    &__button {
+        max-inline-size: 261px;
+        block-size: 38px;
+        padding: 13px 0;
+    }
+}
 }

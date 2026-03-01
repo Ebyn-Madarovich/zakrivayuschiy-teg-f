@@ -248,14 +248,18 @@
       </section>
     </main>
     <footer class="footer">
-      <button class="button footer__button" type="button" onclick="window['dialog-id'].showModal()"
+      <button class="button footer__button" type="button" onclick="window['dialog-id'].show()"
         aria-controls="dialog-id">
-        <img class="footer__icon" src="./assets/icons/floppy.svg" alt="">
+        <svg class="footer__icon" aria-hidden="true">
+          <use href="./assets/icons/floppy-symbol.svg#floppy"></use>
+        </svg>
         <span class="button__text">Сохранить на память</span>
       </button>
       <dialog class="modal-window" id="dialog-id">
         <div class="modal-window__body">
-          <img class="modal-window__image" src="./assets/icons/floppy.svg" alt="">
+          <svg class="modal-window__icon" aria-hidden="true">
+            <use href="./assets/icons/floppy-symbol.svg#floppy"></use>
+          </svg>
           <p class="modal-window__title">Вставьте
             дискету, чтобы продолжить</p>
         </div>
@@ -263,7 +267,7 @@
           <button class="button modal-window__button" type="submit">ок</button>
         </form>
         <!-- Сейчас поведение кнопки "ок" выглядит как простое закрытие, без подтверждения действия.
-        Что может быть неочевидным ждя юзера. 
+        Что может быть неочевидным для юзера. 
         Было бы неплохо разделить логику, подтверждение по триггеру, а закрытие отдельной кнопкой (крестик справа вверху). -->
       </dialog>
     </footer>

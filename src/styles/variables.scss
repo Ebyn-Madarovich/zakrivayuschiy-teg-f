@@ -28,10 +28,11 @@
     linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
 
     //отступы
-    --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
+    // --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
+    --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem) clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
 
     //container
-    --container-width: clamp(23.438rem, 100vw, 43.75rem);
+    --container-width: clamp(374px, 100%, 700px);
     --container-margin: 0 auto;
     --block-border: 0.156rem solid var(--color-main);
 }

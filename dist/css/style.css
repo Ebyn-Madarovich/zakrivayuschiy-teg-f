@@ -73,8 +73,8 @@ ol {
   repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
   repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
   linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
-  --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
-  --container-width: clamp(23.438rem, 100vw, 43.75rem);
+  --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem) clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
+  --container-width: clamp(374px, 100%, 700px);
   --container-margin: 0 auto;
   --block-border: 0.156rem solid var(--color-main);
 }
@@ -122,12 +122,17 @@ ol {
   display: grid;
   place-items: center;
   inline-size: var(--container-width);
-  margin: 100px auto 45px;
+  margin: 100px auto 50px;
   padding: var(--padding-header);
   background-color: var(--color-background);
   border: var(--block-border);
 }
 
+@media (width >= 376px) {
+  .header {
+    margin-bottom: 48px;
+  }
+}
 .heading {
   font-family: var(--font-accent);
   font-size: var(--title-font-size);
@@ -176,8 +181,8 @@ ol {
   font-variation-settings: "wght" var(--font-weight-main-bold), "wdth" 100, "opsz" 0;
 }
 .card__media {
-  block-size: clamp(23.1875rem, -0.5385rem + 101.2308vw, 43.75rem);
-  inline-size: clamp(23.1875rem, -0.25rem + 100vw, 43.5rem);
+  block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
+  max-width: 100%; /* запрещаем быть шире card */
   background-color: rgb(197, 197, 197);
   position: relative;
 }
@@ -219,7 +224,8 @@ ol {
   padding: 1px 0 0 4px;
 }
 .card__like-button {
-  padding: 11px 35px;
+  display: grid;
+  place-items: center;
   border: var(--block-border);
   block-size: 38px;
   inline-size: 129px;
@@ -262,22 +268,36 @@ ol {
 .footer__icon {
   block-size: 21px;
   inline-size: 21px;
+  display: block;
+  fill: #000;
+  flex-shrink: 0;
 }
 
+@media (width <= 375px) {
+  .footer__button {
+    flex-direction: column;
+    block-size: 84px;
+    gap: 8px;
+  }
+  .footer__icon {
+    block-size: 28px;
+    inline-size: 28px;
+  }
+}
 .modal-window {
-  max-inline-size: clamp(21.3125rem, 20.4471rem + 3.6923vw, 22.0625rem);
+  max-inline-size: 353px;
   max-block-size: 191px;
   display: flex;
   flex-direction: column;
   gap: 29px;
   padding: 28px 30px 27px 26px;
-  overflow: auto;
   position: fixed;
   inset: 0;
   transition: opacity 0.3s ease-in-out;
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 400;
+  box-sizing: border-box;
 }
 .modal-window:not([open]) {
   pointer-events: none;
@@ -286,6 +306,12 @@ ol {
 .modal-window__body {
   display: flex;
   gap: 20px;
+  align-items: center;
+}
+.modal-window__icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
 }
 .modal-window__title {
   line-height: 150%;
@@ -297,7 +323,25 @@ ol {
   block-size: 38px;
   text-transform: uppercase;
   line-height: 90%;
+  cursor: pointer;
 }
 .modal-window::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media (width <= 375px) {
+  .modal-window {
+    max-inline-size: 341px;
+    max-block-size: 191px;
+    gap: 29px;
+    padding: 28px 20px 27px 36px;
+  }
+  .modal-window__body {
+    gap: 22px;
+  }
+  .modal-window__button {
+    max-inline-size: 261px;
+    block-size: 38px;
+    padding: 13px 0;
+  }
 }

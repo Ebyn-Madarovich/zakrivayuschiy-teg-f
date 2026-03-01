@@ -16,5 +16,24 @@
      &__icon {
         block-size: 21px;
         inline-size: 21px;
+        display: block;
+        fill: #000; 
+        flex-shrink: 0;
      }
+}
+
+@media (width <= 375px) {
+   .footer {
+      &__button {
+      flex-direction: column;
+      block-size: 84px;
+      gap: 8px;
+      }
+
+      &__icon {
+         block-size: 28px;
+         inline-size: 28px;
+      }
+   }
+   
 }
