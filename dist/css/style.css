@@ -263,3 +263,41 @@ ol {
   block-size: 21px;
   inline-size: 21px;
 }
+
+.modal-window {
+  max-inline-size: clamp(21.3125rem, 20.4471rem + 3.6923vw, 22.0625rem);
+  max-block-size: 191px;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  padding: 28px 30px 27px 26px;
+  overflow: auto;
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.3s ease-in-out;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-weight: 400;
+}
+.modal-window:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+.modal-window__body {
+  display: flex;
+  gap: 20px;
+}
+.modal-window__title {
+  line-height: 150%;
+  text-transform: uppercase;
+}
+.modal-window__button {
+  border: var(--block-border);
+  inline-size: clamp(16.3125rem, 14.0048rem + 9.8462vw, 18.3125rem);
+  block-size: 38px;
+  text-transform: uppercase;
+  line-height: 90%;
+}
+.modal-window::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}

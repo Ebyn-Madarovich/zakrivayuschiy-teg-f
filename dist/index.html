@@ -25,15 +25,16 @@
               <h2 class="card__title">Фритрек и нулевой спринт: Подготовка к работе</h2>
               <div class="card__media">
                 <div class="card__label-wrapper">
-                  <span class="label">&lt;/html&gt;</span>
+                  <span class="label">&lt;начало?&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/0.JPG" alt="">
+                <img class="card__image" src="./assets/images/0.JPG"
+                  alt="Спокойное зелёное поле с высокой травой под мягким облачным небом." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">Это было самое начало пути. На этом этапе важно было проникнуться основами
                   и
                   настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше будущее.</p>
-                <p class="card__my-story">Место для ваших воспоминаний о начале обучения.</p>
+                <p class="card__my-story">Не совсем начало...</p>
               </div>
               <div class="card__actions">
                 <button class="card__icon-button">
@@ -52,7 +53,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Самоуверенный старт&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/1.jpg" alt="">
+                <img class="card__image" src="./assets/images/1.jpg"
+                  alt="Тёплые холмы с одиноким амбаром и сухой травой под ясным небом." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">На первых этапах мы работали со страхами и сомнениями, которые часто
@@ -79,7 +81,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Самоуверенный старт&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/2.jpg" alt="">
+                <img class="card__image" src="./assets/images/2.jpg"
+                  alt="Тихое озеро среди равнин под плотным серым облачным небом." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">Первый проект — позади! Но это всё ещё самое начало пути. Радость могла
@@ -105,7 +108,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Снятие иллюзий&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/3.jpg" alt="">
+                <img class="card__image" src="./assets/images/3.jpg"
+                  alt="Извилистая дорога среди холмов в лёгкой дымке закатного света." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">На этом этапе вы уже достаточно разбирались в основах вёрстки, чтобы
@@ -134,7 +138,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Снятие иллюзий&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/4.jpg" alt="">
+                <img class="card__image" src="./assets/images/4.jpg"
+                  alt="Горный хребет, частично скрытый туманом и низкими облаками." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">Всё это время вы были не одиноки (хотя, возможно, иногда и чувствовали, что
@@ -162,7 +167,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Первый страх&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/5.jpg" alt="">
+                <img class="card__image" src="./assets/images/5.jpg"
+                  alt="Снежные вершины гор, возвышающиеся над плотным слоем облаков." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">На этом курсе вы постоянно решали разные задачи. В какой-то момент вам
@@ -189,7 +195,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Первый страх&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/6.jpg" alt="">
+                <img class="card__image" src="./assets/images/6.jpg"
+                  alt="Грозовое небо с молнией над скалистым каньоном на закате." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">Во время учёбы часто возникает чувство, когда не знаешь, за что хвататься.
@@ -215,7 +222,8 @@
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Осознанный путь&gt;</span>
                 </div>
-                <img class="card__image" src="./assets/images/7.jpg" alt="">
+                <img class="card__image" src="./assets/images/7.jpg"
+                  alt="Человек, сидящий на краю холма и смотрящий на суровые горы под тяжёлым небом." loading="lazy">
               </div>
               <div class="card__body">
                 <p class="card__description">Сейчас вы уже очень много знаете о вёрстке. Но это только начало.
@@ -240,10 +248,24 @@
       </section>
     </main>
     <footer class="footer">
-      <button class="button footer__button">
+      <button class="button footer__button" type="button" onclick="window['dialog-id'].showModal()"
+        aria-controls="dialog-id">
         <img class="footer__icon" src="./assets/icons/floppy.svg" alt="">
         <span class="button__text">Сохранить на память</span>
       </button>
+      <dialog class="modal-window" id="dialog-id">
+        <div class="modal-window__body">
+          <img class="modal-window__image" src="./assets/icons/floppy.svg" alt="">
+          <p class="modal-window__title">Вставьте
+            дискету, чтобы продолжить</p>
+        </div>
+        <form method="dialog" class="modal-window__form-action">
+          <button class="button modal-window__button" type="submit">ок</button>
+        </form>
+        <!-- Сейчас поведение кнопки "ок" выглядит как простое закрытие, без подтверждения действия.
+        Что может быть неочевидным ждя юзера. 
+        Было бы неплохо разделить логику, подтверждение по триггеру, а закрытие отдельной кнопкой (крестик справа вверху). -->
+      </dialog>
     </footer>
   </div>
   <script src="./js/like.js"></script>
