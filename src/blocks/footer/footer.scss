@@ -6,7 +6,6 @@
         display: flex;
         gap: 8px;
         padding: 17px 18px;
-        background-color: var(--color-background);
         block-size: 55px;
         max-inline-size: 335px;
         margin-bottom: 100px;
@@ -17,8 +16,11 @@
         block-size: 21px;
         inline-size: 21px;
         display: block;
-        fill: #000; 
+        color: var(--color-btn-icon-def); 
         flex-shrink: 0;
+        position: relative;
+        z-index: 10;
+        mix-blend-mode: difference;
      }
 }
 

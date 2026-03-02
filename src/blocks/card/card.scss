@@ -25,6 +25,7 @@
         position: absolute;
         inset-block-start: 26px;
         inset-inline-end: 24px;
+        z-index: 10;
     }
 
     &__image {
@@ -54,15 +55,28 @@
 
     &__actions {
         display: flex;
-        gap: 12px;
+        gap: 8px;
         justify-content: flex-end;
         padding: 0 25px 25px 0;
     }
 
-    &__icon-button {
+    &__icon-button {  //сердце
         background-color: transparent;
-        border: none;
-        padding: 1px 0 0 4px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        border: 2px solid transparent;
+        inline-size: 38px;
+        block-size: 38px;
+        padding: 0;
+        @include grid-center-center;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus-visible {
+            border: var(--block-border);
+        }
     }
 
     &__like-button {
@@ -71,4 +85,49 @@
         block-size: 38px;
         inline-size: 129px;
     }
+}
+
+/*==== Модификаторы ==== */
+
+.card__image {
+
+//   Одиночные состояния
+
+  &--blurred {
+    filter: blur(1px);
+  }  // 0
+
+  &--saturated {
+    filter: saturate(170%);
+  } // 1
+
+  &--grayscale {
+    filter: grayscale(25%);
+  } // 2
+
+  &--sepia {
+    filter: sepia(30%);
+  } // 3
+
+
+//   Двойные состояния
+
+  &--contrast-hue {
+    filter: contrast(115%) hue-rotate(-8deg);
+  } // 4
+
+  &--contrast-opacity {
+    filter: contrast(122%) opacity(0.95);
+  } // 5
+
+  &--invert-saturate {
+    filter: invert(6%) saturate(110%);
+  } //6 
+
+
+//   Тройные состояния
+
+  &--grayscale-contrast-saturate {
+    filter: grayscale(15%) contrast(130%) saturate(125%);
+  } // 7
 }

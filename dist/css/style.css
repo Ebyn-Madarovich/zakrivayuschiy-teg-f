@@ -69,6 +69,9 @@ ol {
   --color-font: rgba(0, 0, 0, 1);
   --color-background: rgba(255, 255, 255, 1);
   --color-shadow-label: rgba(255, 255, 255, 1);
+  --color-btn-bg-def: rgba(255, 255, 255, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(255, 255, 255, 1);
   --background-image-gradient:
   repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
   repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
@@ -110,7 +113,6 @@ ol {
   background-image: var(--background-image-gradient);
   background-size: cover;
   background-attachment: fixed;
-  background-position: center center;
 }
 .page__wrapper {
   display: flex;
@@ -122,13 +124,13 @@ ol {
   display: grid;
   place-items: center;
   inline-size: var(--container-width);
-  margin: 100px auto 50px;
+  margin: 100px auto 45px;
   padding: var(--padding-header);
   background-color: var(--color-background);
   border: var(--block-border);
 }
 
-@media (width >= 376px) {
+@media (width <= 376px) {
   .header {
     margin-bottom: 48px;
   }
@@ -153,14 +155,42 @@ ol {
 
 .button {
   border: none;
-  background-color: transparent;
+  outline: none;
+  background-color: var(--color-btn-bg-def);
   appearance: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 .button__text {
   font-family: var(--font-accent);
   font-weight: var(--font-weight-accent);
   font-size: 14px;
   line-height: 90%;
+  color: var(--color-btn-text-def);
+  position: relative;
+  z-index: 10;
+  mix-blend-mode: difference;
+}
+.button:focus {
+  outline: none;
+}
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--color-main);
+}
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--color-main);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.button:hover::after {
+  transform: translateX(0);
 }
 
 .card-feed__list {
@@ -190,6 +220,7 @@ ol {
   position: absolute;
   inset-block-start: 26px;
   inset-inline-end: 24px;
+  z-index: 10;
 }
 .card__image {
   margin: 0;
@@ -214,14 +245,26 @@ ol {
 }
 .card__actions {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   justify-content: flex-end;
   padding: 0 25px 25px 0;
 }
 .card__icon-button {
   background-color: transparent;
-  border: none;
-  padding: 1px 0 0 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+  inline-size: 38px;
+  block-size: 38px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.card__icon-button:focus {
+  outline: none;
+}
+.card__icon-button:focus-visible {
+  border: var(--block-border);
 }
 .card__like-button {
   display: grid;
@@ -229,6 +272,32 @@ ol {
   border: var(--block-border);
   block-size: 38px;
   inline-size: 129px;
+}
+
+/*==== Модификаторы ==== */
+.card__image--blurred {
+  filter: blur(1px);
+}
+.card__image--saturated {
+  filter: saturate(170%);
+}
+.card__image--grayscale {
+  filter: grayscale(25%);
+}
+.card__image--sepia {
+  filter: sepia(30%);
+}
+.card__image--contrast-hue {
+  filter: contrast(115%) hue-rotate(-8deg);
+}
+.card__image--contrast-opacity {
+  filter: contrast(122%) opacity(0.95);
+}
+.card__image--invert-saturate {
+  filter: invert(6%) saturate(110%);
+}
+.card__image--grayscale-contrast-saturate {
+  filter: grayscale(15%) contrast(130%) saturate(125%);
 }
 
 .label {
@@ -250,6 +319,12 @@ ol {
     text-shadow: none;
   }
 }
+.like-icon {
+  inline-size: 27px;
+  block-size: 24px;
+  display: block; /* чтобы не было лишних inline-отступов */
+}
+
 .footer {
   display: grid;
   place-items: center;
@@ -259,7 +334,6 @@ ol {
   display: flex;
   gap: 8px;
   padding: 17px 18px;
-  background-color: var(--color-background);
   block-size: 55px;
   max-inline-size: 335px;
   margin-bottom: 100px;
@@ -269,8 +343,11 @@ ol {
   block-size: 21px;
   inline-size: 21px;
   display: block;
-  fill: #000;
+  color: var(--color-btn-icon-def);
   flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  mix-blend-mode: difference;
 }
 
 @media (width <= 375px) {
