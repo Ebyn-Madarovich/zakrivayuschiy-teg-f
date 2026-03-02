@@ -320,7 +320,6 @@ ol {
 .label {
   color: var(--color-main);
   text-transform: uppercase;
-  mix-blend-mode: hard-light;
   font-family: var(--font-accent);
   font-weight: var(--font-weight-accent);
   font-size: 14px;
