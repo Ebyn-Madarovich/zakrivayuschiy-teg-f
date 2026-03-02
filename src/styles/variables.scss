@@ -1,47 +1,46 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-    // шрифт
-    --font-main: 'Inter-Variable', sans-serif;
-    --font-accent: 'PressStart2P', monospace;
+  // шрифт
+  --font-main: 'Inter-Variable', sans-serif;
+  --font-accent: 'PressStart2P', monospace;
 
-    // шрифт-начертания
-    --font-weight-main-bold: 715; 
-    --font-weight-main-normal: 410;
-    --font-weight-accent: 400;
+  // шрифт-начертания
+  --font-weight-main-bold: 715;
+  --font-weight-main-normal: 410;
+  --font-weight-accent: 400;
 
-    // шрифт-размер
-    --title-font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
-    --title-font-size-accent: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
-    --title-card-font-size: 18px;
+  // шрифт-размер
+  --title-font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  --title-font-size-accent: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  --title-card-font-size: 18px;
 
+  // цвета
+  --color-main: rgba(0, 0, 0, 1);
+  --color-font: rgba(0, 0, 0, 1);
+  --color-background: rgba(255, 255, 255, 1);
+  --color-shadow-label: rgba(255, 255, 255, 1);
+  // кнопка-цвета
+  --color-btn-bg-def: rgba(255, 255, 255, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(255, 255, 255, 1);
+  // сердце-цвета
+  --color-icon-contour: rgba(0, 0, 0, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
 
-    // цвета
-    --color-main: rgba(0, 0, 0, 1);
-    --color-font: rgba(0, 0, 0, 1);
-    --color-background: rgba(255, 255, 255, 1);
-    --color-shadow-label: rgba(255, 255, 255, 1);
-    // кнопка-цвета
-    --color-btn-bg-def: rgba(255, 255, 255, 1);
-    --color-btn-text-def: rgba(255, 255, 255, 1);
-    --color-btn-icon-def: rgba(255, 255, 255, 1);
-    // сердце-цвета
-    --color-icon-contour: rgba(0, 0, 0, 1);
-    --color-icon-sparks: rgba(255, 0, 0, 1);
-    --color-animation-fill: rgba(255, 0, 0, 1);
-
-    //фон
-    --background-image-gradient: 
+  //фон
+  --background-image-gradient:
     repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
     repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
-    linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
 
-    //отступы
-    // --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
-    --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem) clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
+  //отступы
+  // --padding-header: clamp(7.625rem, 7.0481rem + 2.4615vw, 8.125rem) clamp(1rem, -6.6442rem + 32.6154vw, 7.625rem);
+  --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem)
+    clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
 
-    //container-and-block
-    --container-width: clamp(374px, 100%, 700px);
-    --container-margin: 0 auto;
-    --block-border: 0.156rem solid var(--color-main);
+  //container-and-block
+  --container-width: clamp(374px, 100%, 700px);
+  --container-margin: 0 auto;
+  --block-border: 0.156rem solid var(--color-main);
 }
-

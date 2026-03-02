@@ -1,44 +1,44 @@
 .button {
-    border: none;
-    outline: none;
-    background-color: var(--color-btn-bg-def);
-    appearance: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
+  border: none;
+  outline: none;
+  background-color: var(--color-btn-bg-def);
+  appearance: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+
+  &__text {
+    font-family: var(--font-accent);
+    font-weight: var(--font-weight-accent);
+    font-size: 14px;
+    line-height: 90%;
+    color: var(--color-btn-text-def);
     position: relative;
-    z-index: 0;
-    overflow: hidden;
+    z-index: 10;
+    mix-blend-mode: difference;
+  }
 
-    &__text {
-        font-family: var(--font-accent);
-        font-weight: var(--font-weight-accent);
-        font-size: 14px;
-        line-height: 90%;
-        color: var(--color-btn-text-def);
-        position: relative;
-        z-index: 10;
-        mix-blend-mode: difference;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &:focus {
-        outline: none;
-    }
+  &:focus-visible {
+    box-shadow: 2px 2px 0 var(--color-main);
+  }
 
-    &:focus-visible {
-            box-shadow: 2px 2px 0 var(--color-main);
-        }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--color-main);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
 
-    &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background-color: var(--color-main);
-        transform: translateX(-100%);
-        transition: transform 0.5s ease; 
-    }
-
-    &:hover::after {
-        transform: translateX(0);
-    }
+  &:hover::after {
+    transform: translateX(0);
+  }
 }

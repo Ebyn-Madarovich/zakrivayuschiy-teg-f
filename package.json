@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp",
     "build": "gulp build",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "format": "prettier --write \"src/**/*.{js,scss,css,html,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,scss,css,html,json,md}\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "gulp": "^5.0.1",
     "gulp-sass": "^6.0.1",
     "prettier": "^3.8.1",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "sharp": "^0.34.5"
   }
 }

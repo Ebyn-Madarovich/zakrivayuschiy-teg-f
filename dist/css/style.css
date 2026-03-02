@@ -1,5 +1,37 @@
 @charset "UTF-8";
+/* --- ENTRY-file ---*/
 /* global-styles */
+/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --font-main: 'Inter-Variable', sans-serif;
+  --font-accent: 'PressStart2P', monospace;
+  --font-weight-main-bold: 715;
+  --font-weight-main-normal: 410;
+  --font-weight-accent: 400;
+  --title-font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  --title-font-size-accent: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  --title-card-font-size: 18px;
+  --color-main: rgba(0, 0, 0, 1);
+  --color-font: rgba(0, 0, 0, 1);
+  --color-background: rgba(255, 255, 255, 1);
+  --color-shadow-label: rgba(255, 255, 255, 1);
+  --color-btn-bg-def: rgba(255, 255, 255, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(255, 255, 255, 1);
+  --color-icon-contour: rgba(0, 0, 0, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
+  --background-image-gradient:
+    repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem)
+    clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
+  --container-width: clamp(374px, 100%, 700px);
+  --container-margin: 0 auto;
+  --block-border: 0.156rem solid var(--color-main);
+}
+
 /* В этом файле уже написаны некоторые базовые стили, которые сбрасывают 
 или преобразуют дефольное браузерное поведение.
 Здесь же лежит утилитарный класс visually-hidden на случай, 
@@ -55,47 +87,7 @@ ol {
   white-space: nowrap;
 }
 
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
-:root {
-  --font-main: 'Inter-Variable', sans-serif;
-  --font-accent: 'PressStart2P', monospace;
-  --font-weight-main-bold: 715;
-  --font-weight-main-normal: 410;
-  --font-weight-accent: 400;
-  --title-font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
-  --title-font-size-accent: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
-  --title-card-font-size: 18px;
-  --color-main: rgba(0, 0, 0, 1);
-  --color-font: rgba(0, 0, 0, 1);
-  --color-background: rgba(255, 255, 255, 1);
-  --color-shadow-label: rgba(255, 255, 255, 1);
-  --color-btn-bg-def: rgba(255, 255, 255, 1);
-  --color-btn-text-def: rgba(255, 255, 255, 1);
-  --color-btn-icon-def: rgba(255, 255, 255, 1);
-  --color-icon-contour: rgba(0, 0, 0, 1);
-  --color-icon-sparks: rgba(255, 0, 0, 1);
-  --color-animation-fill: rgba(255, 0, 0, 1);
-  --background-image-gradient:
-  repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
-  repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
-  linear-gradient( to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
-  --padding-header: clamp(7.5rem, 6.7788rem + 3.0769vw, 8.125rem) clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
-  --container-width: clamp(374px, 100%, 700px);
-  --container-margin: 0 auto;
-  --block-border: 0.156rem solid var(--color-main);
-}
-
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
+/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.*/
 @keyframes heart-scale {
   0% {
     transform: scale(1);
@@ -143,7 +135,9 @@ ol {
   display: grid;
   place-items: center;
   inline-size: var(--container-width);
-  margin: 100px auto 45px;
+  margin-inline: auto;
+  margin-block-start: 100px;
+  margin-block-end: 45px;
   padding: var(--padding-header);
   background-color: var(--color-background);
   border: var(--block-border);
@@ -151,7 +145,7 @@ ol {
 
 @media (width <= 376px) {
   .header {
-    margin-bottom: 50px;
+    margin-block-end: 50px;
   }
 }
 .heading {
@@ -169,7 +163,8 @@ ol {
 
 .main {
   inline-size: var(--container-width);
-  margin: 0 auto;
+  margin-block: 0;
+  margin-inline: auto;
 }
 
 .button {
@@ -231,7 +226,7 @@ ol {
 }
 .card__media {
   block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
-  max-width: 100%; /* запрещаем быть шире card */
+  max-inline-size: 100%; /* запрещаем быть шире card */
   background-color: rgb(197, 197, 197);
   position: relative;
 }
@@ -266,7 +261,10 @@ ol {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  padding: 0 25px 25px 0;
+  padding-block-start: 0;
+  padding-inline-end: 25px;
+  padding-block-end: 25px;
+  padding-inline-start: 0;
 }
 .card__icon-button {
   background-color: transparent;
@@ -404,10 +402,11 @@ ol {
   border: var(--block-border);
   display: flex;
   gap: 8px;
-  padding: 17px 18px;
   block-size: 55px;
   max-inline-size: 335px;
-  margin-bottom: 100px;
+  padding-block: 17px;
+  padding-inline: 18px;
+  margin-block-end: 100px;
   align-items: center;
 }
 .footer__icon {
@@ -438,7 +437,8 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 29px;
-  padding: 28px 30px 27px 26px;
+  padding-block: 28px 27px;
+  padding-inline: 26px 30px;
   position: fixed;
   inset: 0;
   transition: opacity 0.3s ease-in-out;
@@ -482,7 +482,8 @@ ol {
     max-inline-size: 341px;
     max-block-size: 191px;
     gap: 29px;
-    padding: 28px 20px 27px 36px;
+    padding-block: 28px 27px;
+    padding-inline: 36px 20px;
   }
   .modal-window__body {
     gap: 22px;
@@ -490,6 +491,7 @@ ol {
   .modal-window__button {
     max-inline-size: 261px;
     block-size: 38px;
-    padding: 13px 0;
+    padding-block: 13px;
+    padding-inline: 0;
   }
 }

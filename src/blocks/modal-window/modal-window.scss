@@ -1,71 +1,72 @@
 .modal-window {
-    max-inline-size: 353px;
-    max-block-size: 191px;
+  max-inline-size: 353px;
+  max-block-size: 191px;
+  @include flex-column;
+  gap: 29px;
+  padding-block: 28px 27px;
+  padding-inline: 26px 30px;
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.3s ease-in-out;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+
+  &:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &__body {
     display: flex;
-    flex-direction: column;
-    gap: 29px;
-    padding: 28px 30px 27px 26px;
-    position: fixed;
-    inset: 0;
-    transition: opacity 0.3s ease-in-out;
-    font-family: var(--font-accent);
-    font-size: 14px;
-    font-weight: 400;
-    box-sizing: border-box;
+    gap: 20px;
+    align-items: center;
+  }
 
-    &:not([open]) {
-        pointer-events: none;
-        opacity: 0;
-}
+  &__icon {
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+  }
 
-    &__body {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
+  &__title {
+    line-height: 150%;
+    text-transform: uppercase;
+  }
 
-    &__icon {
-        width: 39px;
-        height: 39px;
-        flex-shrink: 0;
-    }
+  &__button {
+    border: var(--block-border);
+    inline-size: clamp(16.3125rem, 14.0048rem + 9.8462vw, 18.3125rem); //clamp
+    block-size: 38px;
+    text-transform: uppercase;
+    line-height: 90%;
+    cursor: pointer;
+  }
 
-    &__title {
-        line-height: 150%;
-        text-transform: uppercase;
-    }
-
-    &__button {
-        border: var(--block-border);
-        inline-size: clamp(16.3125rem, 14.0048rem + 9.8462vw, 18.3125rem); //clamp
-        block-size: 38px;
-        text-transform: uppercase;
-        line-height: 90%;
-        cursor: pointer;
-
-    }
-
-    &::backdrop {
-        background-color: rgb(0 0 0 / 0.75);
-        // backdrop-filter: blur(7px);
-} 
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0.75);
+    // backdrop-filter: blur(7px);
+  }
 }
 
 @media (width <= 375px) {
-    .modal-window {
+  .modal-window {
     max-inline-size: 341px;
     max-block-size: 191px;
     gap: 29px;
-    padding: 28px 20px 27px 36px;
+    padding-block: 28px 27px;
+    padding-inline: 36px 20px;
 
     &__body {
-        gap: 22px;
+      gap: 22px;
     }
 
     &__button {
-        max-inline-size: 261px;
-        block-size: 38px;
-        padding: 13px 0;
+      max-inline-size: 261px;
+      block-size: 38px;
+      padding-block: 13px;
+      padding-inline: 0;
     }
-}
+  }
 }

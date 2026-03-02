@@ -1,16 +1,13 @@
 .heading {
-    
-    font-family: var(--font-accent);
-    font-size: var(--title-font-size);
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: var(--font-weight-accent);
+  font-family: var(--font-accent);
+  font-size: var(--title-font-size);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-accent);
 
-    &__accent {
-        display: block;
-        font-size: var(--title-font-size-accent);
-        margin-bottom: 20px;
-    }
-
-    
+  &__accent {
+    display: block;
+    font-size: var(--title-font-size-accent);
+    margin-bottom: 20px;
+  }
 }

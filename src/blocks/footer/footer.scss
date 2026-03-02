@@ -1,41 +1,41 @@
 .footer {
-    @include grid-center-center;
+  @include grid-center-center;
 
-     &__button {
-        border: var(--block-border);
-        display: flex;
-        gap: 8px;
-        padding: 17px 18px;
-        block-size: 55px;
-        max-inline-size: 335px;
-        margin-bottom: 100px;
-        align-items: center;
-     }
+  &__button {
+    border: var(--block-border);
+    display: flex;
+    gap: 8px;
+    block-size: 55px;
+    max-inline-size: 335px;
+    padding-block: 17px;
+    padding-inline: 18px;
+    margin-block-end: 100px;
+    align-items: center;
+  }
 
-     &__icon {
-        block-size: 21px;
-        inline-size: 21px;
-        display: block;
-        color: var(--color-btn-icon-def); 
-        flex-shrink: 0;
-        position: relative;
-        z-index: 10;
-        mix-blend-mode: difference;
-     }
+  &__icon {
+    block-size: 21px;
+    inline-size: 21px;
+    display: block;
+    color: var(--color-btn-icon-def);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    mix-blend-mode: difference;
+  }
 }
 
 @media (width <= 375px) {
-   .footer {
-      &__button {
+  .footer {
+    &__button {
       flex-direction: column;
       block-size: 84px;
       gap: 8px;
-      }
+    }
 
-      &__icon {
-         block-size: 28px;
-         inline-size: 28px;
-      }
-   }
-   
+    &__icon {
+      block-size: 28px;
+      inline-size: 28px;
+    }
+  }
 }

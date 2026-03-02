@@ -1,14 +1,16 @@
 .header {
-    @include grid-center-center;
-    inline-size: var(--container-width);
-    margin: 100px auto 45px;
-    padding: var(--padding-header);
-    background-color: var(--color-background);
-    border: var(--block-border);
+  @include grid-center-center;
+  inline-size: var(--container-width);
+  margin-inline: auto;
+  margin-block-start: 100px;
+  margin-block-end: 45px;
+  padding: var(--padding-header);
+  background-color: var(--color-background);
+  border: var(--block-border);
 }
 
 @media (width <= 376px) {
-    .header {
-        margin-bottom: 50px;
-    }
+  .header {
+    margin-block-end: 50px;
+  }
 }

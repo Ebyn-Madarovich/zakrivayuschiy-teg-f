@@ -1,102 +1,101 @@
 .card {
+  @include flex-column;
+  background-color: var(--color-background);
+  border: var(--block-border);
+
+  &__title {
+    font-size: var(--title-card-font-size);
+    padding: 4px 10px;
+    font-variation-settings:
+      'wght' var(--font-weight-main-bold),
+      'wdth' 100,
+      'opsz' 0;
+  }
+
+  &__media {
+    block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
+    max-inline-size: 100%; /* запрещаем быть шире card */
+    background-color: rgb(197, 197, 197);
+    position: relative;
+  }
+
+  &__label-wrapper {
+    position: absolute;
+    inset-block-start: 26px;
+    inset-inline-end: 24px;
+    z-index: 10;
+  }
+
+  &__image {
+    margin: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__body {
+    @include flex-column;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  &__description {
+    line-height: 21px;
+    font-size: 18px;
+  }
+
+  &__my-story {
+    line-height: 21px;
+    font-size: 18px;
+  }
+
+  &__actions {
     display: flex;
-    flex-direction: column;
-    background-color: var(--color-background);
+    gap: 10px;
+    justify-content: flex-end;
+    padding-block-start: 0;
+    padding-inline-end: 25px;
+    padding-block-end: 25px;
+    padding-inline-start: 0;
+  }
+
+  &__icon-button {
+    //сердце
+    background-color: transparent;
+    outline: none;
+    transition: border-color 0.3s ease;
+    border: 2px solid transparent;
+    inline-size: 38px;
+    block-size: 38px;
+    padding: 0;
+    @include grid-center-center;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      border: var(--block-border);
+    }
+  }
+
+  &__like-button {
+    @include grid-center-center;
     border: var(--block-border);
-
-    &__title {
-        font-size: var(--title-card-font-size);
-        padding: 4px 10px;
-        font-variation-settings:
-            'wght' var(--font-weight-main-bold),
-            'wdth' 100,
-            'opsz' 0;
-
-    }
-
-    &__media {
-        block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
-        // min-width: 0;      /* ключевое: разрешаем ужиматься */
-        max-width: 100%;   /* запрещаем быть шире card */
-        background-color: rgb(197, 197, 197);
-        position: relative;
-    }
-
-    &__label-wrapper {
-        position: absolute;
-        inset-block-start: 26px;
-        inset-inline-end: 24px;
-        z-index: 10;
-    }
-
-    &__image {
-        margin: 0;
-        block-size: 100%;
-        inline-size: 100%;
-        display: block;
-        object-fit: cover;
-    }
-
-    &__body {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        padding: 25px;
-    }
-
-    &__description {
-        line-height: 21px;
-        font-size: 18px;
-    }
-
-    &__my-story {
-        line-height: 21px;
-        font-size: 18px;
-    }
-
-    &__actions {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-        padding: 0 25px 25px 0;
-    }
-
-    &__icon-button {  //сердце
-        background-color: transparent;
-        outline: none;
-        transition: border-color 0.3s ease;
-        border: 2px solid transparent;
-        inline-size: 38px;
-        block-size: 38px;
-        padding: 0;
-        @include grid-center-center;
-
-        &:focus {
-            outline: none;
-        }
-
-        &:focus-visible {
-            border: var(--block-border);
-        }
-    }
-
-    &__like-button {
-        @include grid-center-center;
-        border: var(--block-border);
-        block-size: 38px;
-        inline-size: 129px;
-    }
+    block-size: 38px;
+    inline-size: 129px;
+  }
 }
 
 /*==== Модификаторы ==== */
 
 .card__image {
-
-//   Одиночные состояния
+  //   Одиночные состояния
 
   &--blurred {
     filter: blur(1px);
-  }  // 0
+  } // 0
 
   &--saturated {
     filter: saturate(170%);
@@ -110,8 +109,7 @@
     filter: sepia(30%);
   } // 3
 
-
-//   Двойные состояния
+  //   Двойные состояния
 
   &--contrast-hue {
     filter: contrast(115%) hue-rotate(-8deg);
@@ -123,10 +121,9 @@
 
   &--invert-saturate {
     filter: invert(6%) saturate(110%);
-  } //6 
+  } //6
 
-
-//   Тройные состояния
+  //   Тройные состояния
 
   &--grayscale-contrast-saturate {
     filter: grayscale(15%) contrast(130%) saturate(125%);
