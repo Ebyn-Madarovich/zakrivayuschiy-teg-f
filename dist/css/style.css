@@ -151,7 +151,7 @@ ol {
 
 @media (width <= 376px) {
   .header {
-    margin-bottom: 48px;
+    margin-bottom: 50px;
   }
 }
 .heading {
@@ -264,7 +264,7 @@ ol {
 }
 .card__actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
   padding: 0 25px 25px 0;
 }
