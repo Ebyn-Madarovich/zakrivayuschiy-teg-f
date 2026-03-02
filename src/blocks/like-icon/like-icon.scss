@@ -1,5 +1,155 @@
 .like-icon {
-  inline-size: 27px;
-  block-size: 24px;
-  display: block; /* чтобы не было лишних inline-отступов */
+  transform-origin: center;
+
+  &__contour {
+    fill: var(--color-icon-contour);
+    transition: fill 0.1s linear;
+  }
+
+  &__main-body {
+    fill: transparent;
+    transition: fill 0.3s linear;
+  }
+
+  &__core {
+    fill: transparent;
+    transition: fill 0.3s linear 0.03s;
+  }
+
+  &__sparks {
+    fill: var(--color-icon-sparks);
+    opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .like-icon__core {
+      fill: var(--color-main);
+      transition: fill 0.3s linear 0s;
+    }
+
+    .like-icon__main-body {
+      fill: var(--color-main);
+      transition: fill 0.3s linear 0.05s;
+    }
+  }
+
+  &:active {
+    .like-icon__core {
+      fill: var(--color-animation-fill);
+      transition: fill 0.3s linear 0s;
+    }
+
+    .like-icon__main-body {
+      fill: var(--color-animation-fill);
+      transition: fill 0.3s linear 0.05s;
+    }
+  }
+
+  &.is-liked {
+    .like-icon__core {
+      fill: var(--color-animation-fill);
+      transition: fill 0.3s linear 0s;
+    }
+
+    .like-icon__main-body {
+      fill: var(--color-animation-fill);
+      transition: fill 0.3s linear 0.05s;
+    }
+
+    .like-icon__contour {
+      fill: var(--color-animation-fill);
+      transition: fill 0.3s linear 0.06s;
+    }
+
+    .like-icon__heart {
+        transform-origin: center;
+        animation: heart-scale 0.3s ease-in 0.1s 1;
+    }
+
+    .like-icon__sparks {
+        animation: sparks-flash 0.3s ease-in 0.3s 1;
+    }
+  }
 }
+
+
+
+
+// .like-icon {
+// //   inline-size: 27px;
+// //   block-size: 24px;
+// //   display: block;
+// }
+
+// .contour {
+//     fill: var(--color-icon-contour);
+//     transition: fill 0.1s linear;
+// }
+
+// .main-body {   
+//     fill: transparent;
+//     transition: fill 0.3s linear;
+// }
+
+// .core {
+//     fill: transparent;
+//     transition: fill 0.3s linear 0.03s;
+// }
+
+// .sparks {
+//     fill: var(--color-icon-sparks);
+//     opacity: 0;
+// }
+
+// .like-icon {
+
+//     &:hover {
+//         cursor: pointer;
+
+//         .core {
+//             fill: var(--color-main);
+//             transition: fill 0.3s linear 0s; 
+//         }
+
+//         .main-body {
+//             fill: var(--color-main);
+//             transition: fill 0.3s linear 0.05s;
+//         }
+//     }
+
+//     &:active {
+
+//         .core {
+//             fill: var(--color-animation-fill);
+//             transition: fill 0.3s linear 0s; 
+//         }
+
+//         .main-body {
+//             fill: var(--color-animation-fill);
+//             transition: fill 0.3s linear 0.05s;
+//         }
+//     }
+
+//     &.is-liked {
+        
+
+//         .core {
+//             fill: var(--color-animation-fill);
+//             transition: fill 0.3s linear 0s; 
+//         }
+
+//         .main-body {
+//             fill: var(--color-animation-fill);
+//             transition: fill 0.3s linear 0.05s;
+//         }
+
+//         .contour { 
+//             fill: var(--color-animation-fill);
+//             transition: fill 0.3s linear 0.06s;
+//         }
+//     }
+
+// }
+

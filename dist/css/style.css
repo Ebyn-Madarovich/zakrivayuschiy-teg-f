@@ -72,6 +72,9 @@ ol {
   --color-btn-bg-def: rgba(255, 255, 255, 1);
   --color-btn-text-def: rgba(255, 255, 255, 1);
   --color-btn-icon-def: rgba(255, 255, 255, 1);
+  --color-icon-contour: rgba(0, 0, 0, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
   --background-image-gradient:
   repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
   repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
@@ -93,6 +96,22 @@ ol {
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+@keyframes heart-scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+@keyframes sparks-flash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* blocks */
 /* Здесь вы напишете основную часть стилей страницы.
 
@@ -320,9 +339,61 @@ ol {
   }
 }
 .like-icon {
-  inline-size: 27px;
-  block-size: 24px;
-  display: block; /* чтобы не было лишних inline-отступов */
+  transform-origin: center;
+}
+.like-icon__contour {
+  fill: var(--color-icon-contour);
+  transition: fill 0.1s linear;
+}
+.like-icon__main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+.like-icon__core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+.like-icon__sparks {
+  fill: var(--color-icon-sparks);
+  opacity: 0;
+}
+.like-icon:hover {
+  cursor: pointer;
+}
+.like-icon:hover .like-icon__core {
+  fill: var(--color-main);
+  transition: fill 0.3s linear 0s;
+}
+.like-icon:hover .like-icon__main-body {
+  fill: var(--color-main);
+  transition: fill 0.3s linear 0.05s;
+}
+.like-icon:active .like-icon__core {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0s;
+}
+.like-icon:active .like-icon__main-body {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0.05s;
+}
+.like-icon.is-liked .like-icon__core {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0s;
+}
+.like-icon.is-liked .like-icon__main-body {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0.05s;
+}
+.like-icon.is-liked .like-icon__contour {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0.06s;
+}
+.like-icon.is-liked .like-icon__heart {
+  transform-origin: center;
+  animation: heart-scale 0.3s ease-in 0.1s 1;
+}
+.like-icon.is-liked .like-icon__sparks {
+  animation: sparks-flash 0.3s ease-in 0.3s 1;
 }
 
 .footer {
