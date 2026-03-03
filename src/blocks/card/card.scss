@@ -15,7 +15,7 @@
 
   &__media {
     block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
-    max-inline-size: 100%; /* запрещаем быть шире card */
+    max-inline-size: 100%;
     background-color: rgb(197, 197, 197);
     position: relative;
   }
@@ -69,7 +69,7 @@
     outline: none;
     transition: border-color 0.3s ease;
     box-shadow: inset 0 0 0 2px transparent;
-    border: 0;
+    border: none;
     inline-size: 38px;
     block-size: 38px;
     padding: 0;
@@ -81,7 +81,6 @@
 
     &:focus-visible {
       outline: none;
-      // border-color: var(--block-border-color);
       box-shadow: inset 0 0 0 2px var(--block-border-color);
     }
   }

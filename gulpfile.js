@@ -2,7 +2,7 @@
 // Node 24 + gulp 5
 // Текстовые (html/scss/js) — через gulp-stream
 // Бинарные ассеты (fonts/images) — нативно через fs.cpSync (байт-в-байт)
-// + Дополнительно генерим WebP/AVIF в dist/assets/images, не трогая оригиналы
+// + Дополнительно генерим WebP/AVIF, не трогая оригиналы
 // DEV: images инкрементально (по filePath) + чистка мусора при unlink
 
 const { src, dest, series, parallel, watch } = require("gulp");
@@ -14,27 +14,41 @@ const fsp = require("fs/promises");
 const path = require("path");
 const sharp = require("sharp");
 
+/* ---------- Build dirs ---------- */
+const DIST_DIR = "dist";
+const PAGES_DIR = "docs"; // GitHub Pages умеет публиковать /docs из ветки
+
 /* ---------- Paths ---------- */
 const paths = {
-  html: { src: "src/index.html", watch: "src/**/*.html", dest: "dist/" },
-  styles: { entry: "src/styles/style.scss", watch: "src/**/*.scss", dest: "dist/css/" },
-  scripts: { src: "src/scripts/**/*.js", watch: "src/scripts/**/*.js", dest: "dist/js/" },
+  html: { src: "src/index.html", watch: "src/**/*.html", dist: `${DIST_DIR}/` },
+  styles: { entry: "src/styles/style.scss", watch: "src/**/*.scss", dist: `${DIST_DIR}/css/` },
+  scripts: { src: "src/scripts/**/*.js", watch: "src/scripts/**/*.js", dist: `${DIST_DIR}/js/` },
 
   // ассеты кроме fonts/images (у тебя тут icons и т.п.)
   assets: {
     src: ["src/assets/**/*", "!src/assets/fonts/**", "!src/assets/images/**"],
     watch: ["src/assets/**/*", "!src/assets/fonts/**", "!src/assets/images/**"],
-    dest: "dist/assets/",
+    dist: `${DIST_DIR}/assets/`,
   },
 
-  fonts: { watch: "src/assets/fonts/**/*", srcDir: "src/assets/fonts", destDir: "dist/assets/fonts" },
-  images: { watch: "src/assets/images/**/*", srcDir: "src/assets/images", destDir: "dist/assets/images" },
+  fonts: {
+    watch: "src/assets/fonts/**/*",
+    srcDir: "src/assets/fonts",
+    distDir: `${DIST_DIR}/assets/fonts`,
+  },
+
+  images: {
+    watch: "src/assets/images/**/*",
+    srcDir: "src/assets/images",
+    distDir: `${DIST_DIR}/assets/images`,
+  },
 };
 
 /* ---------- Helpers ---------- */
 async function clean() {
   const { deleteAsync } = await import("del");
-  return deleteAsync(["dist"]);
+  // dist — локальная сборка, docs — публикация Pages
+  return deleteAsync([DIST_DIR, PAGES_DIR]);
 }
 
 function dirCopy(fromDir, toDir) {
@@ -102,14 +116,17 @@ async function generateForOneImage(srcFileAbs, srcRootAbs, destRootAbs) {
 async function listFilesRecursive(dir) {
   const out = [];
   const entries = await fsp.readdir(dir, { withFileTypes: true });
+
   for (const e of entries) {
     const p = path.join(dir, e.name);
 
+    // на всякий: не ходим по симлинкам
     if (e.isSymbolicLink && e.isSymbolicLink()) continue;
 
     if (e.isDirectory()) out.push(...(await listFilesRecursive(p)));
     else out.push(p);
   }
+
   return out;
 }
 
@@ -127,7 +144,7 @@ async function generateModernImages(srcDir, destDir) {
 
 async function copyOneFileFromImages(srcFileAbs) {
   const srcRootAbs = path.resolve(paths.images.srcDir);
-  const destRootAbs = path.resolve(paths.images.destDir);
+  const destRootAbs = path.resolve(paths.images.distDir);
 
   const rel = path.relative(srcRootAbs, srcFileAbs);
   const outAbs = path.join(destRootAbs, rel);
@@ -138,7 +155,7 @@ async function copyOneFileFromImages(srcFileAbs) {
 
 async function deleteOneFileFromDist(srcFileAbs) {
   const srcRootAbs = path.resolve(paths.images.srcDir);
-  const destRootAbs = path.resolve(paths.images.destDir);
+  const destRootAbs = path.resolve(paths.images.distDir);
 
   const rel = path.relative(srcRootAbs, srcFileAbs);
   const outOriginal = path.join(destRootAbs, rel);
@@ -154,37 +171,44 @@ async function deleteOneFileFromDist(srcFileAbs) {
 
 /* ---------- BUILD ---------- */
 function htmlBuild() {
-  return src(paths.html.src).pipe(dest(paths.html.dest));
+  return src(paths.html.src).pipe(dest(paths.html.dist));
 }
 
 function stylesBuild() {
   return src(paths.styles.entry)
     .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
-    .pipe(dest(paths.styles.dest));
+    .pipe(dest(paths.styles.dist));
 }
 
 function scriptsBuild() {
-  return src(paths.scripts.src).pipe(dest(paths.scripts.dest));
+  return src(paths.scripts.src).pipe(dest(paths.scripts.dist));
 }
 
 function assetsBuild() {
-  return src(paths.assets.src).pipe(dest(paths.assets.dest));
+  return src(paths.assets.src).pipe(dest(paths.assets.dist));
 }
 
 function fontsBuild(done) {
-  dirCopy(paths.fonts.srcDir, paths.fonts.destDir);
+  dirCopy(paths.fonts.srcDir, paths.fonts.distDir);
   done();
 }
 
 async function imagesBuild() {
-  await dirResetAndCopy(paths.images.srcDir, paths.images.destDir);
-  await generateModernImages(paths.images.srcDir, paths.images.destDir);
+  await dirResetAndCopy(paths.images.srcDir, paths.images.distDir);
+  await generateModernImages(paths.images.srcDir, paths.images.distDir);
+}
+
+/* ---------- GitHub Pages mirror (dist -> docs) ---------- */
+function pagesBuild(done) {
+  // полностью зеркалим dist в docs
+  dirCopy(DIST_DIR, PAGES_DIR);
+  done();
 }
 
 /* ---------- DEV ---------- */
 function htmlDev() {
   return src(paths.html.src)
-    .pipe(dest(paths.html.dest))
+    .pipe(dest(paths.html.dist))
     .on("end", () => browserSync.reload());
 }
 
@@ -196,31 +220,31 @@ function stylesDev() {
         this.emit("end");
       })
     )
-    .pipe(dest(paths.styles.dest))
+    .pipe(dest(paths.styles.dist))
     .pipe(browserSync.stream());
 }
 
 function scriptsDev() {
   return src(paths.scripts.src)
-    .pipe(dest(paths.scripts.dest))
+    .pipe(dest(paths.scripts.dist))
     .on("end", () => browserSync.reload());
 }
 
 function assetsDev() {
   return src(paths.assets.src)
-    .pipe(dest(paths.assets.dest))
+    .pipe(dest(paths.assets.dist))
     .on("end", () => browserSync.reload());
 }
 
 function fontsDev(done) {
-  dirCopy(paths.fonts.srcDir, paths.fonts.destDir);
+  dirCopy(paths.fonts.srcDir, paths.fonts.distDir);
   browserSync.reload();
   done();
 }
 
 async function handleImagesWatch(event, filePath) {
   const srcRootAbs = path.resolve(paths.images.srcDir);
-  const destRootAbs = path.resolve(paths.images.destDir);
+  const destRootAbs = path.resolve(paths.images.distDir);
   const absPath = path.resolve(filePath);
 
   try {
@@ -253,7 +277,7 @@ async function handleImagesWatch(event, filePath) {
 
 function serve() {
   browserSync.init({
-    server: { baseDir: "dist" },
+    server: { baseDir: DIST_DIR },
     notify: false,
     open: true,
   });
@@ -261,9 +285,7 @@ function serve() {
   watch(paths.html.watch, htmlDev);
   watch(paths.styles.watch, stylesDev);
   watch(paths.scripts.watch, scriptsDev);
-
   watch(paths.assets.watch, assetsDev);
-
   watch(paths.fonts.watch, fontsDev);
 
   const w = watch(paths.images.watch);
@@ -277,7 +299,8 @@ function serve() {
 const build = series(
   clean,
   parallel(htmlBuild, stylesBuild, scriptsBuild, assetsBuild),
-  parallel(fontsBuild, imagesBuild)
+  parallel(fontsBuild, imagesBuild),
+  pagesBuild // после билда зеркалим в /docs для GitHub Pages
 );
 
 const dev = series(build, serve);
