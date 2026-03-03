@@ -21,6 +21,7 @@
   --color-icon-contour: rgba(0, 0, 0, 1);
   --color-icon-sparks: rgba(255, 0, 0, 1);
   --color-animation-fill: rgba(255, 0, 0, 1);
+  --color-floppy: rgba(255, 255, 255, 1);
   --background-image-gradient:
     repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
     repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
@@ -29,9 +30,134 @@
     clamp(0.9375rem, -6.8149rem + 33.0769vw, 7.65625rem);
   --container-width: clamp(374px, 100%, 700px);
   --container-margin: 0 auto;
-  --block-border: 0.156rem solid var(--color-main);
+  --block-border-color: rgba(0, 0, 0, 1);
+  --block-border: 0.156rem solid var(--block-border-color);
+  --btn-main-color: rgba(0, 0, 0, 1);
+  --btn-shadow-color: rgba(0, 0, 0, 1);
+  --btn-border-def: rgba(0, 0, 0, 1);
+  --btn-bg-def: rgba(255, 255, 255, 1);
+  --btn-bg-hover: rgba(0, 0, 0, 1);
+  --btn-icon-border-def: rgba(0, 0, 0, 1);
+  --btn-icon-border-hover: rgba(255, 255, 255, 1);
+  --btn-icon-bg-def: rgba(0, 0, 0, 1);
+  --btn-icon-bg-hover: rgba(255, 255, 255, 1);
 }
 
+:root.theme-light {
+  /* светлая по умолчанию */
+  --color-main: rgba(0, 0, 0, 1);
+  --color-font: rgba(0, 0, 0, 1);
+  --color-background: rgba(255, 255, 255, 1);
+  --color-shadow-label: rgba(255, 255, 255, 1);
+  --color-btn-bg-def: rgba(255, 255, 255, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(255, 255, 255, 1);
+  --color-icon-contour: rgba(0, 0, 0, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
+  --color-floppy: rgba(255, 255, 255, 1);
+  --background-image-gradient:
+    repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --block-border-color: rgba(0, 0, 0, 1);
+  --btn-main-color: rgba(0, 0, 0, 1);
+  --btn-shadow-color: rgba(0, 0, 0, 1);
+  --btn-border-def: rgba(0, 0, 0, 1);
+  --btn-bg-def: rgba(255, 255, 255, 1);
+  --btn-bg-hover: rgba(0, 0, 0, 1);
+  --btn-icon-border-def: rgba(0, 0, 0, 1);
+  --btn-icon-border-hover: rgba(255, 255, 255, 1);
+  --btn-icon-bg-def: rgba(0, 0, 0, 1);
+  --btn-icon-bg-hover: rgba(255, 255, 255, 1);
+}
+
+:root.theme-auto {
+  /* светлая по умолчанию */
+  --color-main: rgba(0, 0, 0, 1);
+  --color-font: rgba(0, 0, 0, 1);
+  --color-background: rgba(255, 255, 255, 1);
+  --color-shadow-label: rgba(255, 255, 255, 1);
+  --color-btn-bg-def: rgba(255, 255, 255, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(255, 255, 255, 1);
+  --color-icon-contour: rgba(0, 0, 0, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
+  --color-floppy: rgba(255, 255, 255, 1);
+  --background-image-gradient:
+    repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --block-border-color: rgba(0, 0, 0, 1);
+  --btn-main-color: rgba(0, 0, 0, 1);
+  --btn-shadow-color: rgba(0, 0, 0, 1);
+  --btn-border-def: rgba(0, 0, 0, 1);
+  --btn-bg-def: rgba(255, 255, 255, 1);
+  --btn-bg-hover: rgba(0, 0, 0, 1);
+  --btn-icon-border-def: rgba(0, 0, 0, 1);
+  --btn-icon-border-hover: rgba(255, 255, 255, 1);
+  --btn-icon-bg-def: rgba(0, 0, 0, 1);
+  --btn-icon-bg-hover: rgba(255, 255, 255, 1);
+}
+
+:root.theme-dark {
+  --color-main: rgba(255, 255, 255, 1);
+  --color-font: rgba(255, 255, 255, 1);
+  --color-background: rgba(0, 0, 0, 1);
+  --color-shadow-label: rgba(0, 0, 0, 1);
+  --color-btn-bg-def: rgba(0, 0, 0, 1);
+  --color-btn-text-def: rgba(255, 255, 255, 1);
+  --color-btn-icon-def: rgba(0, 0, 0, 1);
+  --color-icon-contour: rgba(255, 255, 255, 1);
+  --color-icon-sparks: rgba(255, 0, 0, 1);
+  --color-animation-fill: rgba(255, 0, 0, 1);
+  --color-floppy: rgba(255, 255, 255, 1);
+  --background-image-gradient:
+    repeating-linear-gradient(#000 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #1a1a1a 0.01%, #000 100%);
+  --block-border-color: rgba(255, 255, 255, 1);
+  --btn-main-color: rgba(255, 255, 255, 1);
+  --btn-shadow-color: rgba(255, 255, 255, 1);
+  --btn-border-def: rgba(255, 255, 255, 1);
+  --btn-bg-def: rgba(0, 0, 0, 1);
+  --btn-bg-hover: rgba(255, 255, 255, 1);
+  --btn-icon-border-def: rgba(255, 255, 255, 1);
+  --btn-icon-border-hover: rgba(0, 0, 0, 1);
+  --btn-icon-bg-def: rgba(255, 255, 255, 1);
+  --btn-icon-bg-hover: rgba(0, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.theme-auto {
+    --color-main: rgba(255, 255, 255, 1);
+    --color-font: rgba(255, 255, 255, 1);
+    --color-background: rgba(0, 0, 0, 1);
+    --color-shadow-label: rgba(0, 0, 0, 1);
+    --color-btn-bg-def: rgba(0, 0, 0, 1);
+    --color-btn-text-def: rgba(255, 255, 255, 1);
+    --color-btn-icon-def: rgba(0, 0, 0, 1);
+    --color-icon-contour: rgba(255, 255, 255, 1);
+    --color-icon-sparks: rgba(255, 0, 0, 1);
+    --color-animation-fill: rgba(255, 0, 0, 1);
+    --color-floppy: rgba(255, 255, 255, 1);
+    --background-image-gradient:
+      repeating-linear-gradient(#000 0 2px, transparent 2px 4px),
+      repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 4px),
+      linear-gradient(to bottom, #1a1a1a 0.01%, #000 100%);
+    --block-border-color: rgba(255, 255, 255, 1);
+    --btn-main-color: rgba(255, 255, 255, 1);
+    --btn-shadow-color: rgba(255, 255, 255, 1);
+    --btn-border-def: rgba(255, 255, 255, 1);
+    --btn-bg-def: rgba(0, 0, 0, 1);
+    --btn-bg-hover: rgba(255, 255, 255, 1);
+    --btn-icon-border-def: rgba(255, 255, 255, 1);
+    --btn-icon-border-hover: rgba(0, 0, 0, 1);
+    --btn-icon-bg-def: rgba(255, 255, 255, 1);
+    --btn-icon-bg-hover: rgba(0, 0, 0, 1);
+  }
+}
 /* В этом файле уже написаны некоторые базовые стили, которые сбрасывают 
 или преобразуют дефольное браузерное поведение.
 Здесь же лежит утилитарный класс visually-hidden на случай, 
@@ -141,6 +267,7 @@ ol {
   padding: var(--padding-header);
   background-color: var(--color-background);
   border: var(--block-border);
+  position: relative;
 }
 
 @media (width <= 376px) {
@@ -154,6 +281,7 @@ ol {
   text-align: center;
   text-transform: uppercase;
   font-weight: var(--font-weight-accent);
+  color: var(--color-font);
 }
 .heading__accent {
   display: block;
@@ -187,6 +315,7 @@ ol {
   position: relative;
   z-index: 10;
   mix-blend-mode: difference;
+  color: var(--color-btn-text-def);
 }
 .button:focus {
   outline: none;
@@ -223,6 +352,7 @@ ol {
   font-size: var(--title-card-font-size);
   padding: 4px 10px;
   font-variation-settings: "wght" var(--font-weight-main-bold), "wdth" 100, "opsz" 0;
+  color: var(--color-font);
 }
 .card__media {
   block-size: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
@@ -252,14 +382,16 @@ ol {
 .card__description {
   line-height: 21px;
   font-size: 18px;
+  color: var(--color-font);
 }
 .card__my-story {
   line-height: 21px;
   font-size: 18px;
+  color: var(--color-font);
 }
 .card__actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: flex-end;
   padding-block-start: 0;
   padding-inline-end: 25px;
@@ -270,7 +402,8 @@ ol {
   background-color: transparent;
   outline: none;
   transition: border-color 0.3s ease;
-  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 2px transparent;
+  border: 0;
   inline-size: 38px;
   block-size: 38px;
   padding: 0;
@@ -281,7 +414,8 @@ ol {
   outline: none;
 }
 .card__icon-button:focus-visible {
-  border: var(--block-border);
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--block-border-color);
 }
 .card__like-button {
   display: grid;
@@ -412,11 +546,11 @@ ol {
   block-size: 21px;
   inline-size: 21px;
   display: block;
-  color: var(--color-btn-icon-def);
   flex-shrink: 0;
   position: relative;
   z-index: 10;
   mix-blend-mode: difference;
+  color: var(--color-floppy);
 }
 
 @media (width <= 375px) {
@@ -440,15 +574,16 @@ ol {
   padding-inline: 26px 30px;
   position: fixed;
   inset: 0;
-  transition: opacity 0.3s ease-in-out;
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 400;
   box-sizing: border-box;
+  display: none;
+  /* для плавной анимации открытия и закрытия закомментировать &[open] и .modal-window display: none; 
+  и раскомментировать &:not([open]) .modal-window transition: opacity 0.3s ease-in-out; */
 }
-.modal-window:not([open]) {
-  pointer-events: none;
-  opacity: 0;
+.modal-window[open] {
+  display: flex;
 }
 .modal-window__body {
   display: flex;
@@ -493,4 +628,82 @@ ol {
     padding-block: 13px;
     padding-inline: 0;
   }
+}
+.theme-block {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 5px;
+  inset-inline-end: 5px;
+  display: grid;
+  place-items: center;
+}
+.theme-block summary {
+  list-style: none;
+}
+.theme-block summary::-webkit-details-marker {
+  display: none;
+}
+.theme-block {
+  /* ===== Кнопка ===== */
+}
+.theme-block__button {
+  inline-size: 33px;
+  block-size: 24px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background-color: var(--btn-bg-def);
+  border: 2px solid var(--btn-border-def);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.15s ease, background-color 0.1s ease;
+}
+.theme-block__button:active {
+  transform: scale(0.95);
+}
+.theme-block__button:focus {
+  outline: none;
+}
+.theme-block__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px var(--btn-main-color);
+}
+.theme-block__button:hover {
+  box-shadow: 2px 2px var(--btn-main-color);
+}
+.theme-block__icon {
+  inline-size: 25px;
+  block-size: 16px;
+  border: 2px solid var(--btn-icon-border-def);
+  background-image: linear-gradient(90deg, var(--btn-icon-bg-def) 50%, transparent 50%);
+  background-repeat: no-repeat;
+}
+.theme-block {
+  /* ===== Меню ===== */
+}
+.theme-block__menu-list {
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-end: 40px;
+  display: flex;
+  z-index: 1;
+}
+.theme-block__toggle {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  font-size: 12px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-font);
+}
+.theme-block__toggle:hover {
+  transform: scale(1.05);
+}
+.theme-block__toggle:focus {
+  outline: none;
+}
+.theme-block__toggle:focus-visible {
+  outline: none;
+  border-block-end: 2px solid var(--btn-shadow-color);
 }

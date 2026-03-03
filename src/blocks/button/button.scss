@@ -18,6 +18,7 @@
     position: relative;
     z-index: 10;
     mix-blend-mode: difference;
+    color: var(--color-btn-text-def);
   }
 
   &:focus {

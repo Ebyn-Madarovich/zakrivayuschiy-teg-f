@@ -7,15 +7,23 @@
   padding-inline: 26px 30px;
   position: fixed;
   inset: 0;
-  transition: opacity 0.3s ease-in-out;
+  // transition: opacity 0.3s ease-in-out;
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 400;
   box-sizing: border-box;
+  display: none;
 
-  &:not([open]) {
-    pointer-events: none;
-    opacity: 0;
+/* для плавной анимации открытия и закрытия закомментировать &[open] и .modal-window display: none; 
+и раскомментировать &:not([open]) .modal-window transition: opacity 0.3s ease-in-out; */
+
+  // &:not([open]) {
+  //   pointer-events: none;
+  //   opacity: 0;
+  // }
+
+  &[open] {
+    display: flex;
   }
 
   &__body {

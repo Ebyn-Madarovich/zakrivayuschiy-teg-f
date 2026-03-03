@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Закрывающий тег</title>
+  <script src="./js/theme.js"></script>
   <link rel="stylesheet" href="./assets/fonts/fonts.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="icon" href="./assets/icons/favicon.ico" sizes="any" />
@@ -15,6 +16,22 @@
 <body class="page">
   <div class="page__wrapper">
     <header class="header">
+      <details class="theme-block">
+        <summary class="theme-block__button">
+          <span class="theme-block__icon"></span>
+        </summary>
+        <ul class="theme-block__menu-list">
+          <li class="theme-block__menu-item">
+            <button type="button" class="theme-block__toggle">Светлая</button>
+          </li>
+          <li class="theme-block__menu-item">
+            <button type="button" class="theme-block__toggle">Авто</button>
+          </li>
+          <li class="theme-block__menu-item">
+            <button type="button" class="theme-block__toggle">Темная</button>
+          </li>
+        </ul>
+      </details>
       <h1 class="heading">
         <span class="heading__accent">&lt;/html&gt;</span>закрывающий тег
       </h1>
@@ -51,7 +68,7 @@
                 <button class="card__icon-button" type="button" aria-label="Поставить лайк">
                   <svg class="like-icon" width="39" height="36" viewBox="0 0 39 36" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <!-- именования классов не по бэм..... добавил корректные доп классы для сохранения архитектуры-->
+                    <!-- именования классов в тз не по бэм..... указал корректные классы для сохранения архитектуры-->
                     <g class="like-icon__heart">
                       <path class="like-icon__contour"
                         d="M12 6H9V9H12V6ZM15 6H12V9H15V6ZM9 9H6V12H9V9ZM9 12H6V15H9V12ZM9 15H6V18H9V15ZM18 6H15V9H18V6ZM12 18H9V21H12V18ZM15 21H12V24H15V21ZM18 24H15V27H18V24ZM27 6H30V9H27V6ZM24 6H27V9H24V6ZM30 9H33V12H30V9ZM30 12H33V15H30V12ZM30 15H33V18H30V15ZM21 6H24V9H21V6ZM27 18H30V21H27V18ZM24 21H27V24H24V21ZM21 24H24V27H21V24ZM21 27H18V30H21V27ZM21 9H18V12H21V9Z" />
@@ -445,14 +462,14 @@
             Вставьте дискету, чтобы продолжить
           </p>
         </div>
+        <!-- Сейчас поведение кнопки "ок" выглядит как простое закрытие, без подтверждения действия.
+        Что может быть неочевидным для юзера. 
+        Было бы неплохо разделить логику, подтверждение по триггеру, а закрытие отдельной кнопкой (крестик справа вверху). -->
         <form method="dialog" class="modal-window__form-action">
           <button class="button modal-window__button" type="submit">
             <span class="button__text">ок</span>
           </button>
         </form>
-        <!-- Сейчас поведение кнопки "ок" выглядит как простое закрытие, без подтверждения действия.
-        Что может быть неочевидным для юзера. 
-        Было бы неплохо разделить логику, подтверждение по триггеру, а закрытие отдельной кнопкой (крестик справа вверху). -->
       </dialog>
     </footer>
   </div>

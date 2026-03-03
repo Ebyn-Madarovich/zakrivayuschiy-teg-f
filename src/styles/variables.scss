@@ -27,6 +27,8 @@
   --color-icon-contour: rgba(0, 0, 0, 1);
   --color-icon-sparks: rgba(255, 0, 0, 1);
   --color-animation-fill: rgba(255, 0, 0, 1);
+  // дискета-цвета
+  --color-floppy: rgba(255, 255, 255, 1);
 
   //фон
   --background-image-gradient:
@@ -42,5 +44,19 @@
   //container-and-block
   --container-width: clamp(374px, 100%, 700px);
   --container-margin: 0 auto;
-  --block-border: 0.156rem solid var(--color-main);
+  --block-border-color: rgba(0, 0, 0, 1);
+  --block-border: 0.156rem solid var(--block-border-color);
+
+  //theme-block
+  --btn-main-color: rgba(0, 0, 0, 1);
+  --btn-shadow-color: rgba(0, 0, 0, 1);
+
+  --btn-border-def: rgba(0, 0, 0, 1);
+  --btn-bg-def: rgba(255, 255, 255, 1);
+  --btn-bg-hover: rgba(0, 0, 0, 1);
+
+  --btn-icon-border-def: rgba(0, 0, 0, 1);
+  --btn-icon-border-hover: rgba(255, 255, 255, 1);
+  --btn-icon-bg-def: rgba(0, 0, 0, 1);
+  --btn-icon-bg-hover: rgba(255, 255, 255, 1);
 }
