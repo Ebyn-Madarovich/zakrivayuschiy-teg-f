@@ -15,3 +15,11 @@
     gap: 50px;
   }
 }
+
+
+// на ios устройствах корректно не работает background-attachment: fixed;
+@supports (-webkit-touch-callout: none) {
+  .page {
+    background-attachment: scroll;
+  }
+}

@@ -1,13 +1,10 @@
 .modal-window {
   max-inline-size: 353px;
-  max-block-size: 191px;
-  @include flex-column;
   gap: 29px;
   padding-block: 28px 27px;
   padding-inline: 26px 30px;
   position: fixed;
   inset: 0;
-  // transition: opacity 0.3s ease-in-out;
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 400;
@@ -23,7 +20,7 @@
   // }
 
   &[open] {
-    display: flex;
+    @include flex-column;
   }
 
   &__body {
@@ -61,7 +58,6 @@
 @media (width <= 375px) {
   .modal-window {
     max-inline-size: 341px;
-    max-block-size: 191px;
     gap: 29px;
     padding-block: 28px 27px;
     padding-inline: 36px 20px;

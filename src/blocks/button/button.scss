@@ -14,7 +14,6 @@
     font-weight: var(--font-weight-accent);
     font-size: 14px;
     line-height: 90%;
-    color: var(--color-btn-text-def);
     position: relative;
     z-index: 10;
     mix-blend-mode: difference;
@@ -42,4 +41,8 @@
   &:hover::after {
     transform: translateX(0);
   }
+}
+
+@media (hover: none) {
+  .button:hover::after { transform: translateX(-100%); }
 }

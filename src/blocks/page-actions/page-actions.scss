@@ -1,5 +1,6 @@
-.footer {
+.page-actions {
   @include grid-center-center;
+  margin-block-start: 50px;
 
   &__button {
     border: var(--block-border);
@@ -26,7 +27,7 @@
 }
 
 @media (width <= 375px) {
-  .footer {
+  .page-actions {
     &__button {
       flex-direction: column;
       block-size: 84px;

@@ -94,3 +94,9 @@
     }
   }
 }
+
+@media (hover: none) {
+  .theme-block__button:hover {
+    box-shadow: none;
+  }
+}

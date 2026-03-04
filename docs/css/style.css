@@ -368,12 +368,7 @@ ol {
   gap: 25px;
   padding: 25px;
 }
-.card__description {
-  line-height: 21px;
-  font-size: 18px;
-  color: var(--color-font);
-}
-.card__my-story {
+.card__text {
   line-height: 21px;
   font-size: 18px;
   color: var(--color-font);
@@ -555,7 +550,6 @@ ol {
 }
 .modal-window {
   max-inline-size: 353px;
-  max-block-size: 191px;
   display: flex;
   flex-direction: column;
   gap: 29px;
@@ -603,7 +597,6 @@ ol {
 @media (width <= 375px) {
   .modal-window {
     max-inline-size: 341px;
-    max-block-size: 191px;
     gap: 29px;
     padding-block: 28px 27px;
     padding-inline: 36px 20px;

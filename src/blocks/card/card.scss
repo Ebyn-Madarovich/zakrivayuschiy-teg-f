@@ -18,6 +18,7 @@
     max-inline-size: 100%;
     background-color: rgb(197, 197, 197);
     position: relative;
+    border-block: 2px solid var(--block-border-color);
   }
 
   &__label-wrapper {
@@ -41,13 +42,7 @@
     padding: 25px;
   }
 
-  &__description {
-    line-height: 21px;
-    font-size: 18px;
-    color: var(--color-font);
-  }
-
-  &__my-story {
+  &__text {
     line-height: 21px;
     font-size: 18px;
     color: var(--color-font);
