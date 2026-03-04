@@ -38,12 +38,15 @@
     </header>
     <main class="main">
       <section class="card-feed">
+        <h2 class="card-feed__title visually-hidden">
+          История обучения
+        </h2>
         <ul class="card-feed__list">
           <li class="card-feed__item">
             <article class="card" data-like-id="0">
-              <h2 class="card__title">
+              <h3 class="card__title">
                 Фритрек и нулевой спринт: Подготовка к работе
-              </h2>
+              </h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
                   <span class="label">&lt;начало?&gt;</span>
@@ -89,7 +92,7 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="1">
-              <h2 class="card__title">1 спринт: Я — чистый лист</h2>
+              <h3 class="card__title">1 спринт: Я — чистый лист</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Самоуверенный старт&gt;</span>
@@ -140,10 +143,10 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="2">
-              <h2 class="card__title">1 спринт: А если не получится?</h2>
+              <h3 class="card__title">1 спринт: А если не получится?</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
-                  <span class="label">&lt;Самоуверенный старт&gt;</span>
+                  <span class="label">&lt;/Самоуверенный старт&gt;</span>
                 </div>
                 <picture>
                   <source srcset="./assets/images/2.avif" type="image/avif" />
@@ -188,7 +191,7 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="3">
-              <h2 class="card__title">2 спринт: Погоня за идеалом</h2>
+              <h3 class="card__title">2 спринт: Погоня за идеалом</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Снятие иллюзий&gt;</span>
@@ -238,10 +241,10 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="4">
-              <h2 class="card__title">2 спринт: О тех, кто рядом</h2>
+              <h3 class="card__title">2 спринт: О тех, кто рядом</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
-                  <span class="label">&lt;Снятие иллюзий&gt;</span>
+                  <span class="label">&lt;/Снятие иллюзий&gt;</span>
                 </div>
                 <picture>
                   <source srcset="./assets/images/4.avif" type="image/avif" />
@@ -288,7 +291,7 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="5">
-              <h2 class="card__title">3 спринт: Обходные стратегии</h2>
+              <h3 class="card__title">3 спринт: Обходные стратегии</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Первый страх&gt;</span>
@@ -336,10 +339,10 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="6">
-              <h2 class="card__title">3 спринт: Когда опускаются руки</h2>
+              <h3 class="card__title">3 спринт: Когда опускаются руки</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
-                  <span class="label">&lt;Первый страх&gt;</span>
+                  <span class="label">&lt;/Первый страх&gt;</span>
                 </div>
                 <picture>
                   <source srcset="./assets/images/6.avif" type="image/avif" />
@@ -385,7 +388,7 @@
           </li>
           <li class="card-feed__item">
             <article class="card" data-like-id="7">
-              <h2 class="card__title">«Сейчас я здесь»</h2>
+              <h3 class="card__title">«Сейчас я здесь»</h3>
               <div class="card__media">
                 <div class="card__label-wrapper">
                   <span class="label">&lt;Осознанный путь&gt;</span>
@@ -438,36 +441,33 @@
         </ul>
       </section>
       <section class="page-actions">
-        <h2 class="page-actions__title ">1</h2>
-      </section>
-    </main>
-    <footer class="footer">
-      <button class="button footer__button" type="button" onclick="window['dialog-id'].showModal()"
-        aria-controls="dialog-id">
-        <svg class="footer__icon" aria-hidden="true">
-          <use href="./assets/icons/floppy-symbol.svg#floppy"></use>
-        </svg>
-        <span class="button__text">Сохранить на память</span>
-      </button>
-      <dialog class="modal-window" id="dialog-id">
-        <div class="modal-window__body">
-          <svg class="modal-window__icon" aria-hidden="true">
+        <h2 class="page-actions__title visually-hidden">
+          Действия со страницей
+        </h2>
+        <button class="button page-actions__button" type="button" onclick="window['dialog-id'].showModal()"
+          aria-controls="dialog-id">
+          <svg class="page-actions__icon" aria-hidden="true">
             <use href="./assets/icons/floppy-symbol.svg#floppy"></use>
           </svg>
-          <p class="modal-window__title">
-            Вставьте дискету, чтобы продолжить
-          </p>
-        </div>
-        <!-- Сейчас поведение кнопки "ок" выглядит как простое закрытие, без подтверждения действия.
-        Что может быть неочевидным для юзера. 
-        Было бы неплохо разделить логику, подтверждение по триггеру, а закрытие отдельной кнопкой (крестик справа вверху). -->
-        <form method="dialog" class="modal-window__form-action">
-          <button class="button modal-window__button" type="submit">
-            <span class="button__text">ок</span>
-          </button>
-        </form>
-      </dialog>
-    </footer>
+          <span class="button__text">Сохранить на память</span>
+        </button>
+
+        <dialog class="modal-window" id="dialog-id">
+          <div class="modal-window__body">
+            <svg class="modal-window__icon" aria-hidden="true">
+              <use href="./assets/icons/floppy-symbol.svg#floppy"></use>
+            </svg>
+            <p class="modal-window__title">Вставьте дискету, чтобы продолжить</p>
+          </div>
+
+          <form method="dialog" class="modal-window__form-action">
+            <button class="button modal-window__button" type="submit">
+              <span class="button__text">ок</span>
+            </button>
+          </form>
+        </dialog>
+      </section>
+    </main>
   </div>
   <script src="./js/like.js"></script>
   <script src="./js/likes-storage.js"></script>

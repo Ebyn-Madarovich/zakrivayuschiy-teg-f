@@ -4,7 +4,7 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
   --font-main: 'Inter-Variable', sans-serif;
-  --font-accent: 'PressStart2P', monospace;
+  --font-accent: 'PressStart2P', fantasy;
   --font-weight-main-bold: 715;
   --font-weight-main-normal: 410;
   --font-weight-accent: 400;
@@ -246,6 +246,11 @@ ol {
   gap: 50px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .page {
+    background-attachment: scroll;
+  }
+}
 .header {
   display: grid;
   place-items: center;
@@ -300,7 +305,6 @@ ol {
   font-weight: var(--font-weight-accent);
   font-size: 14px;
   line-height: 90%;
-  color: var(--color-btn-text-def);
   position: relative;
   z-index: 10;
   mix-blend-mode: difference;
@@ -325,6 +329,11 @@ ol {
   transform: translateX(0);
 }
 
+@media (hover: none) {
+  .button:hover::after {
+    transform: translateX(-100%);
+  }
+}
 .card-feed__list {
   display: flex;
   flex-direction: column;
@@ -348,6 +357,7 @@ ol {
   max-inline-size: 100%;
   background-color: rgb(197, 197, 197);
   position: relative;
+  border-block: 2px solid var(--block-border-color);
 }
 .card__label-wrapper {
   position: absolute;
@@ -511,11 +521,12 @@ ol {
   animation: sparks-flash 0.3s ease-in 0.3s 1;
 }
 
-.footer {
+.page-actions {
   display: grid;
   place-items: center;
+  margin-block-start: 50px;
 }
-.footer__button {
+.page-actions__button {
   border: var(--block-border);
   display: flex;
   gap: 8px;
@@ -526,7 +537,7 @@ ol {
   margin-block-end: 100px;
   align-items: center;
 }
-.footer__icon {
+.page-actions__icon {
   block-size: 21px;
   inline-size: 21px;
   display: block;
@@ -538,20 +549,18 @@ ol {
 }
 
 @media (width <= 375px) {
-  .footer__button {
+  .page-actions__button {
     flex-direction: column;
     block-size: 84px;
     gap: 8px;
   }
-  .footer__icon {
+  .page-actions__icon {
     block-size: 28px;
     inline-size: 28px;
   }
 }
 .modal-window {
   max-inline-size: 353px;
-  display: flex;
-  flex-direction: column;
   gap: 29px;
   padding-block: 28px 27px;
   padding-inline: 26px 30px;
@@ -567,6 +576,7 @@ ol {
 }
 .modal-window[open] {
   display: flex;
+  flex-direction: column;
 }
 .modal-window__body {
   display: flex;
@@ -688,4 +698,10 @@ ol {
 .theme-block__toggle:focus-visible {
   outline: none;
   border-block-end: 2px solid var(--btn-shadow-color);
+}
+
+@media (hover: none) {
+  .theme-block__button:hover {
+    box-shadow: none;
+  }
 }
